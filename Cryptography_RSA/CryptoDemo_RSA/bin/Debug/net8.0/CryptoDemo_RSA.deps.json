@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CryptoDemo_RSA/1.0.0": {
+        "dependencies": {
+          "CryptoLib_RSA": "1.0.0"
+        },
+        "runtime": {
+          "CryptoDemo_RSA.dll": {}
+        }
+      },
+      "CryptoLib_RSA/1.0.0": {
+        "runtime": {
+          "CryptoLib_RSA.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CryptoDemo_RSA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CryptoLib_RSA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

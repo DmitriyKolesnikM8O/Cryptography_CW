@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoLib", "CryptoLib\CryptoLib.csproj", "{638820B1-952A-4C22-8D51-F151FA3D0D52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoDemo", "CryptoDemo\CryptoDemo.csproj", "{79C8E4EC-702A-4BFC-9DD8-ABECAB10DCA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTests", "CryptoTests\CryptoTests.csproj", "{14E01F48-B608-4769-BF9B-FB0818320472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoApp", "CryptoApp\CryptoApp.csproj", "{7FF88192-6A70-48C2-8A97-0D4D79EAB757}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{638820B1-952A-4C22-8D51-F151FA3D0D52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638820B1-952A-4C22-8D51-F151FA3D0D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638820B1-952A-4C22-8D51-F151FA3D0D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638820B1-952A-4C22-8D51-F151FA3D0D52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C8E4EC-702A-4BFC-9DD8-ABECAB10DCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C8E4EC-702A-4BFC-9DD8-ABECAB10DCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C8E4EC-702A-4BFC-9DD8-ABECAB10DCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C8E4EC-702A-4BFC-9DD8-ABECAB10DCA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14E01F48-B608-4769-BF9B-FB0818320472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E01F48-B608-4769-BF9B-FB0818320472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E01F48-B608-4769-BF9B-FB0818320472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E01F48-B608-4769-BF9B-FB0818320472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FF88192-6A70-48C2-8A97-0D4D79EAB757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FF88192-6A70-48C2-8A97-0D4D79EAB757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FF88192-6A70-48C2-8A97-0D4D79EAB757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FF88192-6A70-48C2-8A97-0D4D79EAB757}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

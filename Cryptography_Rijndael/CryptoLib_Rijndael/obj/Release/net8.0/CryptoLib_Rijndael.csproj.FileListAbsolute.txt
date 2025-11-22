@@ -1,0 +1,12 @@
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/bin/Release/net8.0/CryptoLib_Rijndael.deps.json
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/bin/Release/net8.0/CryptoLib_Rijndael.dll
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/bin/Release/net8.0/CryptoLib_Rijndael.pdb
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/CryptoLib_Rijndael.GeneratedMSBuildEditorConfig.editorconfig
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/CryptoLib_Rijndael.AssemblyInfoInputs.cache
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/CryptoLib_Rijndael.AssemblyInfo.cs
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/CryptoLib_Rijndael.csproj.CoreCompileInputs.cache
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/CryptoLib_Rijndael.sourcelink.json
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/CryptoLib_Rijndael.dll
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/refint/CryptoLib_Rijndael.dll
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/CryptoLib_Rijndael.pdb
+/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/Release/net8.0/ref/CryptoLib_Rijndael.dll

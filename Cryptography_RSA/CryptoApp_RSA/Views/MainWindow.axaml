@@ -1,0 +1,115 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CryptoApp.ViewModels"
+        x:Class="CryptoApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Криптографический инструментарий RSA"
+        Width="850" Height="600">
+
+    <TabControl>
+        <!-- RSA -->
+        <TabItem Header="RSA Шифрование">
+            <DockPanel>
+                <Border DockPanel.Dock="Bottom" BorderThickness="0,1,0,0" BorderBrush="LightGray" Padding="5" Margin="0,10,0,0">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}" Width="100" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding StatusMessage}" Foreground="Gray" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Grid ColumnDefinitions="*,*" Margin="10">
+                    <StackPanel Grid.Column="0" Spacing="10" Margin="0,0,10,0">
+                        <TextBlock Text="1. Генерация ключей" FontWeight="Bold"/>
+                        <TextBlock Text="Битность (для p и q):"/>
+                        <ComboBox ItemsSource="{Binding AvailableBitLengths}" SelectedItem="{Binding SelectedBitLength}" IsEnabled="{Binding !IsBusy}"/>
+                        <TextBlock Text="Тест простоты:"/>
+                        <ComboBox ItemsSource="{Binding TestTypes}" SelectedItem="{Binding SelectedTestType}" IsEnabled="{Binding !IsBusy}"/>
+                        <Button Content="Сгенерировать ключи" Command="{Binding GenerateKeysCommand}" HorizontalAlignment="Stretch"/>
+                        <TextBlock Text="2. Шифрование" FontWeight="Bold" Margin="0,15,0,0"/>
+                        <TextBlock Text="Сообщение (число):"/>
+                        <TextBox Text="{Binding MessageToEncrypt}" IsEnabled="{Binding !IsBusy}"/>
+                        <Button Content="Зашифровать" Command="{Binding EncryptCommand}" HorizontalAlignment="Stretch"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Spacing="10" Margin="10,0,0,0">
+                        <TextBlock Text="Сгенерированные ключи" FontWeight="Bold"/>
+                        <TextBlock Text="Открытый ключ (E):"/>
+                        <TextBox Text="{Binding PublicKeyE}" IsReadOnly="True"/>
+                        <TextBlock Text="Открытый/Закрытый модуль (N):"/>
+                        <TextBox Text="{Binding PublicKeyN}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="80"/>
+                        <TextBlock Text="Закрытый ключ (D):"/>
+                        <TextBox Text="{Binding PrivateKeyD}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="80"/>
+                        <TextBlock Text="3. Результаты" FontWeight="Bold" Margin="0,15,0,0"/>
+                        <TextBlock Text="Зашифрованное сообщение (C):"/>
+                        <TextBox Text="{Binding EncryptedMessage}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="80"/>
+                        <Button Content="Расшифровать" Command="{Binding DecryptCommand}" HorizontalAlignment="Left" Margin="0,5,0,0"/>
+                        <TextBlock Text="Расшифрованное сообщение:" Margin="0,5,0,0"/>
+                        <TextBox Text="{Binding DecryptedMessage}" IsReadOnly="True"/>
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
+        </TabItem>
+
+        <!-- ТЕСТЕР ПРОСТОТЫ -->
+        <TabItem Header="Тестер простоты">
+            <StackPanel Spacing="10" Margin="20">
+                <TextBlock Text="Введите число для проверки на простоту:" FontSize="16"/>
+                <TextBox Text="{Binding NumberToTest}" Watermark="Введите большое целое число" IsEnabled="{Binding !IsBusy}"/>
+                <TextBlock Text="Выберите метод тестирования:" FontSize="16" Margin="0,10,0,0"/>
+                <ComboBox ItemsSource="{Binding TestTypes}" SelectedItem="{Binding SelectedTestTypeForCheck}" IsEnabled="{Binding !IsBusy}"/>
+                <Button Content="Проверить" Command="{Binding CheckPrimalityCommand}" HorizontalAlignment="Stretch" Margin="0,10,0,0"/>
+                <Border BorderBrush="Gray" BorderThickness="1" Padding="15" Margin="0,20,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Результат:" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding PrimalityTestResult}" FontSize="14" TextWrapping="Wrap" Margin="0,5,0,0" Foreground="{Binding IsResultPrime, Converter={StaticResource BoolToColorConverter}}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </TabItem>
+
+        <!-- АТАКА ВИНЕРА -->
+        <TabItem Header="Атака Винера">
+        <Grid ColumnDefinitions="320, *" Margin="10">
+            
+            <StackPanel Spacing="10" Margin="0,0,10,0">
+                <TextBlock Text="Уязвимый открытый ключ:" FontSize="16"/>
+                <TextBlock Text="Экспонента (E):"/>
+                <TextBox Text="{Binding WienersAttackE}" IsEnabled="{Binding !IsBusy}"/>
+                <TextBlock Text="Модуль (N):"/>
+                <TextBox Text="{Binding WienersAttackN}" IsEnabled="{Binding !IsBusy}"/>
+                
+                <Button Content="Предзаполнить уязвимым ключом" Command="{Binding PreloadWeakKeyCommand}" Margin="0,10,0,0"/>
+                <Button Content="Выполнить атаку" Command="{Binding ExecuteWienersAttackCommand}"/>
+            </StackPanel>
+            
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Padding="10">
+                <ScrollViewer>
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Результаты атаки:" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding WienersAttackResultStatus}"/>
+
+                        <TextBlock Text="Найденный секретный ключ (d):" FontWeight="SemiBold" IsVisible="{Binding WienersAttackFoundD, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        <TextBox Text="{Binding WienersAttackFoundD}" IsReadOnly="True" IsVisible="{Binding WienersAttackFoundD, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                        <TextBlock Text="Восстановленная функция Эйлера (phi):" FontWeight="SemiBold" IsVisible="{Binding WienersAttackFoundPhi, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        <TextBox Text="{Binding WienersAttackFoundPhi}" IsReadOnly="True" IsVisible="{Binding WienersAttackFoundPhi, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        
+                        <TextBlock Text="Вычисленные подходящие дроби (k/d):" FontWeight="SemiBold" Margin="0,10,0,0" IsVisible="{Binding WienersAttackConvergents, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                        <ItemsControl ItemsSource="{Binding WienersAttackConvergents}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <Run Text="{Binding NumeratorK}"/>
+                                        <Run Text="/"/>
+                                        <Run Text="{Binding DenominatorD}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </TabItem>
+
+    </TabControl>
+</Window>

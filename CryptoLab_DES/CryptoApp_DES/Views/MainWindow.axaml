@@ -1,0 +1,84 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CryptoApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="650"
+        x:Class="CryptoApp.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="CryptoApp DES/DEAL"
+        WindowStartupLocation="CenterScreen">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="15">
+        <TextBlock Grid.Row="0" Text="DES/DEAL File Encryption" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Spacing="10" Margin="0,20,0,0">
+            
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="1. Настройки шифрования" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Алгоритм:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Algorithms}" SelectedItem="{Binding SelectedAlgorithm}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Режим:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CipherModes}" SelectedItem="{Binding SelectedMode}"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="2. Ключ и Вектор инициализации (IV)" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <DockPanel>
+                        <Button Content="Сгенерировать" DockPanel.Dock="Right" Command="{Binding GenerateKeyAndIvCommand}" IsEnabled="{Binding !IsBusy}"/>
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Ключ (Hex):"/>
+                            <TextBox Text="{Binding KeyHex}" Watermark="Например, 13-34-57..."/>
+                            <TextBlock Text="IV (Hex):" IsVisible="{Binding IsIvVisible}"/>
+                            <TextBox Text="{Binding IvHex}" IsVisible="{Binding IsIvVisible}" Watermark="Будет сгенерирован, если требуется"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="3. Файлы" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock Text="Исходный файл:"/>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBox Grid.Column="0" Text="{Binding InputFilePath}" IsReadOnly="True"/>
+                        <Button Grid.Column="1" Content="..." Command="{Binding SelectInputFileCommand}" IsEnabled="{Binding !IsBusy}"/>
+                    </Grid>
+                    <TextBlock Text="Файл для результата:"/>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBox Grid.Column="0" Text="{Binding OutputFilePath}" IsReadOnly="True"/>
+                        <Button Grid.Column="1" Content="..." Command="{Binding SelectOutputFileCommand}" IsEnabled="{Binding !IsBusy}"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            
+            <Grid ColumnDefinitions="*,*" Margin="0,10,0,0">
+                <Button Grid.Column="0" Content="Шифровать" Command="{Binding EncryptFileCommand}" IsEnabled="{Binding !IsBusy}" HorizontalAlignment="Stretch" Padding="10,8" Margin="0,0,5,0"/>
+                <Button Grid.Column="1" Content="Дешифровать" Command="{Binding DecryptFileCommand}" IsEnabled="{Binding !IsBusy}" HorizontalAlignment="Stretch" Padding="10,8" Margin="5,0,0,0"/>
+            </Grid>
+        </StackPanel>
+
+        
+        <Border Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0" Padding="0,10,0,0">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}" Width="100"/>
+                <TextBlock Text="{Binding StatusMessage}" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>

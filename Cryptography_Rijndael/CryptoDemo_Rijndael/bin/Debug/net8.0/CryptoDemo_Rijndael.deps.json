@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CryptoDemo_Rijndael/1.0.0": {
+        "dependencies": {
+          "CryptoLib_Rijndael": "1.0.0"
+        },
+        "runtime": {
+          "CryptoDemo_Rijndael.dll": {}
+        }
+      },
+      "CryptoLib_Rijndael/1.0.0": {
+        "runtime": {
+          "CryptoLib_Rijndael.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CryptoDemo_Rijndael/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CryptoLib_Rijndael/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,12 @@
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/bin/Debug/net8.0/CryptoLib_RSA.deps.json
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/bin/Debug/net8.0/CryptoLib_RSA.dll
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/bin/Debug/net8.0/CryptoLib_RSA.pdb
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/CryptoLib_RSA.GeneratedMSBuildEditorConfig.editorconfig
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/CryptoLib_RSA.AssemblyInfoInputs.cache
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/CryptoLib_RSA.AssemblyInfo.cs
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/CryptoLib_RSA.csproj.CoreCompileInputs.cache
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/CryptoLib_RSA.sourcelink.json
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/CryptoLib_RSA.dll
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/refint/CryptoLib_RSA.dll
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/CryptoLib_RSA.pdb
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/Debug/net8.0/ref/CryptoLib_RSA.dll
