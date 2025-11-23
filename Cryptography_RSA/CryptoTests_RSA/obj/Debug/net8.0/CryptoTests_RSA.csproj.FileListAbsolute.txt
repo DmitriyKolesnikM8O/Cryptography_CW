@@ -100,3 +100,8 @@
 /home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/obj/Debug/net8.0/CryptoTests_RSA.pdb
 /home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/obj/Debug/net8.0/CryptoTests_RSA.genruntimeconfig.cache
 /home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/obj/Debug/net8.0/ref/CryptoTests_RSA.dll
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/bin/Debug/net8.0/TestData/archive.zip
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/bin/Debug/net8.0/TestData/audio.mp3
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/bin/Debug/net8.0/TestData/image.jpg
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/bin/Debug/net8.0/TestData/text.txt
+/home/ares/Cryptography_CW/Cryptography_RSA/CryptoTests_RSA/bin/Debug/net8.0/TestData/video.mp4

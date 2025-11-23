@@ -24,6 +24,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CryptoLib_RSA\CryptoLib_RSA.csproj" />
+    <Content Include="TestData\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

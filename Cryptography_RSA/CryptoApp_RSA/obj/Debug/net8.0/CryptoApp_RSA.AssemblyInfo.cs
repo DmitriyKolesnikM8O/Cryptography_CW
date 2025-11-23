@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoApp_RSA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea696e4165388d9ed1bc21a38b11f390f87c252e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2aa4934bd52fe800f41538d0401058e43803f7a")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoApp_RSA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoApp_RSA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
