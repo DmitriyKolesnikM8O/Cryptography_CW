@@ -10,3 +10,7 @@
 /home/ares/Cryptography_CW/CryptoLib_New/obj/Debug/net8.0/refint/CryptoLib_New.dll
 /home/ares/Cryptography_CW/CryptoLib_New/obj/Debug/net8.0/CryptoLib_New.pdb
 /home/ares/Cryptography_CW/CryptoLib_New/obj/Debug/net8.0/ref/CryptoLib_New.dll
+/home/ares/Cryptography_CW/CryptoLib_New/bin/Debug/net8.0/CryptoLib_DES.dll
+/home/ares/Cryptography_CW/CryptoLib_New/bin/Debug/net8.0/CryptoLib_DES.pdb
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Debug/net8.0/CryptoLib_New.csproj.AssemblyReference.cache
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Debug/net8.0/CryptoLib_New.csproj.CopyComplete

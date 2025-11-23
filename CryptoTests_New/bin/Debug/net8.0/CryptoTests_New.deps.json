@@ -1029,6 +1029,9 @@
         }
       },
       "CryptoLib_New/1.0.0": {
+        "dependencies": {
+          "CryptoLib_DES": "1.0.0"
+        },
         "runtime": {
           "CryptoLib_New.dll": {}
         }

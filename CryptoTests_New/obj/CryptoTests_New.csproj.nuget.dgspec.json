@@ -78,7 +78,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj": {
+                "projectPath": "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

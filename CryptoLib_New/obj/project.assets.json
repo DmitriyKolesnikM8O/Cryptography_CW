@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "CryptoLib_DES/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CryptoLib_DES.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CryptoLib_DES.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CryptoLib_DES/1.0.0": {
+      "type": "project",
+      "path": "../CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj",
+      "msbuildProject": "../CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "CryptoLib_DES >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/home/ares/.nuget/packages/": {}
@@ -31,7 +50,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj": {
+              "projectPath": "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
