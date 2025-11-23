@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoLib_DES")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc3eb09a6ef1774fa5357872280f7a54f4be4603")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b5cb221a893540f5e3746c2916ed785d652bab1")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoLib_DES")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoLib_DES")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

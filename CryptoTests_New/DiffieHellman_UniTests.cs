@@ -6,13 +6,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 
-// Подключаем наш новый протокол
 using CryptoLib.New.Protocols.DiffieHellman;
 
-// Подключаем библиотеку DES (используем псевдоним DesModes, чтобы не путать с другими режимами)
 using DesModes = CryptoLib.DES.Modes;
 
-// Подключаем библиотеку Rijndael
 using CryptoLib.Rijndael.Algorithms.Rijndael;
 using CryptoLib.Rijndael.Algorithms.Rijndael.Enums;
 
@@ -23,27 +20,19 @@ namespace CryptoTests_New
         [Fact]
         public async Task DiffieHellman_Universal_Distribution_Demo()
         {
-            // ====================================================================================
-            // ЭТАП 1: УСТАНОВЛЕНИЕ ЗАЩИЩЕННОГО КАНАЛА (Diffie-Hellman)
-            // ====================================================================================
             
             // 1. Алиса и Боб генерируют свои пары ключей (Приватный + Публичный)
             var aliceDH = new DiffieHellmanProtocol();
             
-            // (В реальности публичный ключ передается по сети)
             var bobDH = new DiffieHellmanProtocol(aliceDH.P, aliceDH.G);
 
             // 2. Алиса и Боб обмениваются публичными ключами и вычисляют общий математический секрет
             BigInteger aliceSecret = aliceDH.CalculateSharedSecret(bobDH.PublicKey);
             BigInteger bobSecret = bobDH.CalculateSharedSecret(aliceDH.PublicKey);
 
-            // Проверка: Секреты должны совпадать байт в байт
+            // Секреты должны совпадать байт в байт
             Assert.Equal(aliceSecret, bobSecret); 
 
-
-            // ====================================================================================
-            // ЭТАП 2: ИНТЕГРАЦИЯ С DES (Требуется ключ 8 байт / 64 бита)
-            // ====================================================================================
             {
                 int keySize = 8;
                 // Превращаем общий секрет в ключ для DES
@@ -53,22 +42,22 @@ namespace CryptoTests_New
                 // Генерируем IV (Вектор инициализации), который передается открыто вместе с сообщением
                 byte[] iv = GenerateIV(8);
 
-                // --- АЛИСА ШИФРУЕТ ---
+                // Алиса в стране Чудев Шифрует
                 var aliceContext = new DesModes.CipherContext(
                     aliceKey,
                     DesModes.CipherMode.CBC,
                     DesModes.PaddingMode.PKCS7,
                     iv,
-                    new KeyValuePair<string, object>("Algorithm", "DES") // Явное указание алгоритма
+                    new KeyValuePair<string, object>("Algorithm", "DES")
                 );
 
                 string message = "Secret DES message via DH";
                 byte[] input = Encoding.UTF8.GetBytes(message);
-                byte[] encrypted = new byte[128]; // Буфер с запасом
+                byte[] encrypted = new byte[128];
                 
                 await aliceContext.EncryptAsync(input, encrypted);
 
-                // --- БОБ ДЕШИФРУЕТ ---
+                // Боб дешифрует
                 var bobContext = new DesModes.CipherContext(
                     bobKey, // Боб использует СВОЙ ключ, полученный из DH
                     DesModes.CipherMode.CBC,
@@ -85,25 +74,19 @@ namespace CryptoTests_New
                 Assert.Contains(message, result);
             }
 
-            // ====================================================================================
-            // ЭТАП 3: ИНТЕГРАЦИЯ С TripleDES (Требуется ключ 24 байта / 192 бита)
-            // ====================================================================================
             {
                 int keySize = 24;
-                // Превращаем тот же секрет в более длинный ключ для 3DES
                 byte[] aliceKey = DiffieHellmanProtocol.DeriveSymmetricKey(aliceSecret, keySize);
                 byte[] bobKey = DiffieHellmanProtocol.DeriveSymmetricKey(bobSecret, keySize);
 
-                // IV для 3DES такой же как у DES (8 байт)
                 byte[] iv = GenerateIV(8);
 
-                // --- АЛИСА ШИФРУЕТ ---
                 var aliceContext = new DesModes.CipherContext(
                     aliceKey,
                     DesModes.CipherMode.CBC,
                     DesModes.PaddingMode.PKCS7,
                     iv,
-                    new KeyValuePair<string, object>("Algorithm", "TripleDES") // Явное указание 3DES
+                    new KeyValuePair<string, object>("Algorithm", "TripleDES")
                 );
 
                 string message = "Super Secret 3DES message via DH";
@@ -112,7 +95,6 @@ namespace CryptoTests_New
                 
                 await aliceContext.EncryptAsync(input, encrypted);
 
-                // --- БОБ ДЕШИФРУЕТ ---
                 var bobContext = new DesModes.CipherContext(
                     bobKey,
                     DesModes.CipherMode.CBC,
@@ -128,29 +110,25 @@ namespace CryptoTests_New
                 Assert.Contains(message, result);
             }
 
-            // ====================================================================================
-            // ЭТАП 4: ИНТЕГРАЦИЯ С RIJNDAEL (AES) (Требуется ключ 32 байта / 256 бит)
-            // ====================================================================================
             {
                 int keySizeBytes = 32; // AES-256 (32 байта)
-                // Генерируем ключ из секрета DH
                 byte[] aliceKey = DiffieHellmanProtocol.DeriveSymmetricKey(aliceSecret, keySizeBytes);
                 byte[] bobKey = DiffieHellmanProtocol.DeriveSymmetricKey(bobSecret, keySizeBytes);
 
-                // --- АЛИСА ШИФРУЕТ ---
+                // Шифровка для Алиски
                 // Создаем шифр: Ключ 256 бит, Блок 128 бит (стандарт AES)
                 // Используем правильные Enums из твоей библиотеки
                 var aliceRijndael = new RijndaelCipher(KeySize.K256, CryptoLib.Rijndael.Algorithms.Rijndael.Enums.BlockSize.B128);
-                aliceRijndael.SetRoundKeys(aliceKey); // Устанавливаем ключ
+                aliceRijndael.SetRoundKeys(aliceKey);
 
-                string message = "RijndaelBlock123"; // Ровно 16 байт (128 бит) для теста одного блока
+                string message = "RijndaelBlock123";
                 byte[] inputBlock = Encoding.UTF8.GetBytes(message);
                 
                 byte[] encryptedBlock = aliceRijndael.EncryptBlock(inputBlock);
 
-                // --- БОБ ДЕШИФРУЕТ ---
+                // Дешифровка для Боба
                 var bobRijndael = new RijndaelCipher(KeySize.K256, CryptoLib.Rijndael.Algorithms.Rijndael.Enums.BlockSize.B128);
-                bobRijndael.SetRoundKeys(bobKey); // Боб использует свой ключ
+                bobRijndael.SetRoundKeys(bobKey);
                 
                 byte[] decryptedBlock = bobRijndael.DecryptBlock(encryptedBlock);
 

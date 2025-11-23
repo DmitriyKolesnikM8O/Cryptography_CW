@@ -43,23 +43,17 @@ namespace CryptoTests_New
         [MemberData(nameof(TestDataGenerator))]
         public async Task DH_SecureFileTransfer_Simulation_ShouldWork(string inputFilePath)
         {
-            // -------------------------------------------------------
-            // СЦЕНАРИЙ: Защищенная передача файла от Алисы к Бобу
-            // -------------------------------------------------------
+            
 
             var diagnostics = new System.Text.StringBuilder();
             diagnostics.AppendLine($"\n--- DH SECURE TRANSFER SIMULATION: {Path.GetFileName(inputFilePath)} ---");
 
-            // 0. Предварительная проверка
             if (!File.Exists(inputFilePath))
             {
                 _output.WriteLine($"File not found: {inputFilePath}. Check TestData copy settings.");
                 return;
             }
 
-            // ==========================================
-            // ЭТАП 1: Рукопожатие (Handshake)
-            // ==========================================
             
             // 1. Алиса и Боб генерируют свои пары DH
             var aliceDH = new DiffieHellmanProtocol();
@@ -82,9 +76,6 @@ namespace CryptoTests_New
             diagnostics.AppendLine($"   Algorithm:    TripleDES (192-bit key)");
             diagnostics.AppendLine($"   Shared Key:   {BitConverter.ToString(aliceKey).Substring(0, 10)}...");
 
-            // ==========================================
-            // ЭТАП 2: Алиса шифрует файл (Encryption)
-            // ==========================================
 
             string encryptedFilePath = Path.GetTempFileName();
             
@@ -105,10 +96,6 @@ namespace CryptoTests_New
             encryptWatch.Stop();
             diagnostics.AppendLine($"2. Alice Encrypted file. Time: {encryptWatch.ElapsedMilliseconds} ms");
 
-            // ==========================================
-            // ЭТАП 3: Боб получает и дешифрует (Decryption)
-            // ==========================================
-
             string decryptedFilePath = Path.GetTempFileName();
 
             // Боб настраивает СВОЙ контекст (используя свой вычисленный ключ bobKey)
@@ -128,10 +115,6 @@ namespace CryptoTests_New
             decryptWatch.Stop();
             diagnostics.AppendLine($"3. Bob Decrypted file.   Time: {decryptWatch.ElapsedMilliseconds} ms");
 
-            // ==========================================
-            // ЭТАП 4: Проверка целостности
-            // ==========================================
-
             byte[] originalBytes = await File.ReadAllBytesAsync(inputFilePath);
             byte[] decryptedBytes = await File.ReadAllBytesAsync(decryptedFilePath);
 
@@ -139,7 +122,6 @@ namespace CryptoTests_New
 
             diagnostics.AppendLine($"4. Verification: Success. MD5 matched (implicitly via byte compare).");
             
-            // Чистка
             if (File.Exists(encryptedFilePath)) File.Delete(encryptedFilePath);
             if (File.Exists(decryptedFilePath)) File.Delete(decryptedFilePath);
 
