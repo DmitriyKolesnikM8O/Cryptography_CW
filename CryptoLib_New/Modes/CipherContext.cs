@@ -37,14 +37,15 @@ namespace CryptoLib.New.Modes
             byte[] key,
             CipherMode mode,
             PaddingMode padding,
-            byte[]? initializationVector = null)
+            byte[]? initializationVector = null,
+            byte polynomial = 0x1B)
         {
             _mode = mode;
             _padding = padding;
             _initializationVector = initializationVector;
 
             // В этой библиотеке всегда используем LOKI97
-            _algorithm = new LOKI97Algorithm(); 
+            _algorithm = new LOKI97Algorithm(key.Length, polynomial); 
             _algorithm.SetRoundKeys(key);
             
             _blockSize = _algorithm.BlockSize; // 16 байт (128 бит)

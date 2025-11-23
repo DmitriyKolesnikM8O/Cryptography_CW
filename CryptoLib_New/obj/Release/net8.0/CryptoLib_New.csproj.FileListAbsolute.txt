@@ -1,0 +1,16 @@
+/home/ares/Cryptography_CW/CryptoLib_New/bin/Release/net8.0/CryptoLib_New.deps.json
+/home/ares/Cryptography_CW/CryptoLib_New/bin/Release/net8.0/CryptoLib_New.dll
+/home/ares/Cryptography_CW/CryptoLib_New/bin/Release/net8.0/CryptoLib_New.pdb
+/home/ares/Cryptography_CW/CryptoLib_New/bin/Release/net8.0/CryptoLib_DES.dll
+/home/ares/Cryptography_CW/CryptoLib_New/bin/Release/net8.0/CryptoLib_DES.pdb
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.csproj.AssemblyReference.cache
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.GeneratedMSBuildEditorConfig.editorconfig
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.AssemblyInfoInputs.cache
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.AssemblyInfo.cs
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.csproj.CoreCompileInputs.cache
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.sourcelink.json
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.csproj.CopyComplete
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.dll
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/refint/CryptoLib_New.dll
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/CryptoLib_New.pdb
+/home/ares/Cryptography_CW/CryptoLib_New/obj/Release/net8.0/ref/CryptoLib_New.dll
