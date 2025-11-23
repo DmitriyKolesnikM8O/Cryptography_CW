@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CryptoLib_New/1.0.0": {
+        "runtime": {
+          "CryptoLib_New.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CryptoLib_New/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

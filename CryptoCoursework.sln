@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoLib_Rijndael", "Crypt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTests_Rijndael", "Cryptography_Rijndael\CryptoTests_Rijndael\CryptoTests_Rijndael.csproj", "{B7E93DFB-4225-4EBC-9B46-68694C2D6912}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoLib_New", "CryptoLib_New\CryptoLib_New.csproj", "{FE0BAAAE-CF0B-4E92-BDBA-9EF083B4C68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTests_New", "CryptoTests_New\CryptoTests_New.csproj", "{3235F3F8-8915-4ACF-849F-B090672B5EB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +94,14 @@ Global
 		{B7E93DFB-4225-4EBC-9B46-68694C2D6912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7E93DFB-4225-4EBC-9B46-68694C2D6912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7E93DFB-4225-4EBC-9B46-68694C2D6912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0BAAAE-CF0B-4E92-BDBA-9EF083B4C68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0BAAAE-CF0B-4E92-BDBA-9EF083B4C68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0BAAAE-CF0B-4E92-BDBA-9EF083B4C68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0BAAAE-CF0B-4E92-BDBA-9EF083B4C68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3235F3F8-8915-4ACF-849F-B090672B5EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3235F3F8-8915-4ACF-849F-B090672B5EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3235F3F8-8915-4ACF-849F-B090672B5EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3235F3F8-8915-4ACF-849F-B090672B5EB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26950FFD-B6E3-4BC5-B674-FF61A627E3BC} = {7174F159-A60E-413B-AB50-F093A8D94601}
