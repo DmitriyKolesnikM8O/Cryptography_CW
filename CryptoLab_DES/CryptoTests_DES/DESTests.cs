@@ -28,15 +28,15 @@ namespace CryptoTests
         [Fact]
         public void DESAlgorithm_EncryptDecrypt_ShouldReturnOriginalData()
         {
-            
+
             var des = new DESAlgorithm();
             des.SetRoundKeys(_testKey);
 
-            
+
             byte[] encrypted = des.EncryptBlock(_testData);
             byte[] decrypted = des.DecryptBlock(encrypted);
 
-            
+
             Assert.Equal(_testData, decrypted);
         }
 
@@ -48,19 +48,19 @@ namespace CryptoTests
         [Fact]
         public async Task CipherContext_ECB_Mode_ShouldEncryptDecrypt()
         {
-            
+
             var context = new CipherContext(_testKey, CipherMode.ECB, PaddingMode.PKCS7, null);
 
             byte[] testData = [0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF, 0xFE, 0xDC, 0xBA, 0x98];
 
-            
+
             byte[] outputEncrypt = new byte[100];
             await context.EncryptAsync(testData, outputEncrypt);
 
             byte[] outputDecrypt = new byte[100];
             await context.DecryptAsync(outputEncrypt, outputDecrypt);
 
-            
+
             Assert.Equal(testData, outputDecrypt.Take(testData.Length).ToArray());
         }
 
@@ -72,19 +72,19 @@ namespace CryptoTests
         [Fact]
         public async Task CipherContext_CBC_Mode_ShouldEncryptDecrypt()
         {
-            
+
             var context = new CipherContext(_testKey, CipherMode.CBC, PaddingMode.PKCS7, _testIV);
 
             byte[] testData = [0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF, 0xFE, 0xDC, 0xBA, 0x98];
 
-            
+
             byte[] outputEncrypt = new byte[100];
             await context.EncryptAsync(testData, outputEncrypt);
 
             byte[] outputDecrypt = new byte[100];
             await context.DecryptAsync(outputEncrypt, outputDecrypt);
 
-            
+
             Assert.Equal(testData, outputDecrypt.Take(testData.Length).ToArray());
         }
 
@@ -96,20 +96,20 @@ namespace CryptoTests
         [Fact]
         public async Task CipherContext_WithRandomData_ShouldWorkCorrectly()
         {
-            
+
             var context = new CipherContext(_testKey, CipherMode.CBC, PaddingMode.PKCS7, _testIV);
             Random random = new(42);
             byte[] randomData = new byte[1024]; // 1KB случайных данных
             random.NextBytes(randomData);
 
-            
+
             byte[] encrypted = new byte[1100];
             await context.EncryptAsync(randomData, encrypted);
 
             byte[] decrypted = new byte[1100];
             await context.DecryptAsync(encrypted, decrypted);
 
-            
+
             Assert.Equal(randomData, decrypted.Take(randomData.Length).ToArray());
         }
 
@@ -121,7 +121,7 @@ namespace CryptoTests
         [Fact]
         public async Task CipherContext_FileEncryption_ShouldWork()
         {
-            
+
             var context = new CipherContext(_testKey, CipherMode.CBC, PaddingMode.PKCS7, _testIV);
 
             string testText = "Hello, DES Encryption! This is a test message for file encryption.";
@@ -129,22 +129,22 @@ namespace CryptoTests
             string encryptedFile = "test_encrypted.dat";
             string decryptedFile = "test_decrypted.txt";
 
-            
+
             await File.WriteAllTextAsync(inputFile, testText);
 
             try
             {
-                
+
                 await context.EncryptAsync(inputFile, encryptedFile);
                 await context.DecryptAsync(encryptedFile, decryptedFile);
 
-                
+
                 string decryptedText = await File.ReadAllTextAsync(decryptedFile);
                 Assert.Equal(testText, decryptedText);
             }
             finally
             {
-                
+
                 if (File.Exists(inputFile)) File.Delete(inputFile);
                 if (File.Exists(encryptedFile)) File.Delete(encryptedFile);
                 if (File.Exists(decryptedFile)) File.Delete(decryptedFile);
@@ -166,20 +166,20 @@ namespace CryptoTests
         [InlineData(CipherMode.RandomDelta)]
         public async Task AllCipherModes_ShouldWorkCorrectly(CipherMode mode)
         {
-            
+
             byte[]? iv = mode == CipherMode.ECB ? null : _testIV;
             var context = new CipherContext(_testKey, mode, PaddingMode.PKCS7, iv);
 
             byte[] testData = [0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF, 0xFE, 0xDC, 0xBA, 0x98];
 
-            
+
             byte[] encrypted = new byte[100];
             await context.EncryptAsync(testData, encrypted);
 
             byte[] decrypted = new byte[100];
             await context.DecryptAsync(encrypted, decrypted);
 
-            
+
             Assert.Equal(testData, decrypted.Take(testData.Length).ToArray());
         }
 
@@ -195,49 +195,22 @@ namespace CryptoTests
         [InlineData(PaddingMode.ISO10126)]
         public async Task AllPaddingModes_ShouldWorkCorrectly(PaddingMode padding)
         {
-            
+
             var context = new CipherContext(_testKey, CipherMode.CBC, padding, _testIV);
 
             byte[] testData = [0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF];
 
-            
+
             byte[] encrypted = new byte[100];
             await context.EncryptAsync(testData, encrypted);
 
             byte[] decrypted = new byte[100];
             await context.DecryptAsync(encrypted, decrypted);
 
-            
+
             Assert.Equal(testData, decrypted.Take(testData.Length).ToArray());
         }
+        
 
-        // [Fact]
-        // public void PerformanceTest_EncryptBlock_Raw()
-        // {
-        //     // Arrange
-        //     var key = new byte[] { 0x13, 0x34, 0x57, 0x79, 0x9B, 0xBC, 0xDF, 0xF1 };
-        //     var block = new byte[] { 0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF };
-            
-        //     var des = new DESAlgorithm();
-        //     des.SetRoundKeys(key);
-
-        //     int iterations = 1_000_000; // Один миллион вызовов
-        //     var stopwatch = new System.Diagnostics.Stopwatch();
-
-        //     // Act
-        //     stopwatch.Start();
-        //     for (int i = 0; i < iterations; i++)
-        //     {
-        //         des.EncryptBlock(block);
-        //     }
-        //     stopwatch.Stop();
-
-        //     // Assert & Output
-        //     // Выводим результат в консоль теста
-        //     Console.WriteLine($"DES EncryptBlock x {iterations} times took: {stopwatch.ElapsedMilliseconds} ms");
-            
-        //     // Тест должен быть очень быстрым. Установим щедрый порог, например, 2 секунды.
-        //     Assert.True(stopwatch.ElapsedMilliseconds < 2000); 
-        // }
     }
 }

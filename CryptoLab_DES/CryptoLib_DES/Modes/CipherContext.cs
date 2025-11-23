@@ -1,6 +1,7 @@
 using CryptoLib.DES.Interfaces;
 using CryptoLib.DES.Algorithms.DES;
 using CryptoLib.DES.Algorithms.DEAL;
+using CryptoLib.DES.Algorithms.TripleDES;
 
 namespace CryptoLib.DES.Modes
 {
@@ -87,6 +88,11 @@ namespace CryptoLib.DES.Modes
                 {
                     var algorithmValue = algorithmParam.Value.ToString();
 
+                    if (algorithmValue.Contains("TripleDES") || algorithmValue.Contains("3DES"))
+                    {
+                        return new TripleDESAlgorithm();
+                    }
+
                     if (algorithmValue.Contains("DEAL"))
                     {
 
@@ -107,6 +113,8 @@ namespace CryptoLib.DES.Modes
                     {
                         "DEAL" => new DEALAlgorithm(), // по умолчанию 128-bit
                         "DES" => new DESAlgorithm(),
+                        "TripleDES" => new TripleDESAlgorithm(), 
+                        "3DES" => new TripleDESAlgorithm(),      
                         _ => throw new ArgumentException($"Unsupported algorithm: {algorithmValue}")
                     };
                 }

@@ -1,0 +1,12 @@
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/bin/Release/net8.0/CryptoLib_DES.deps.json
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/bin/Release/net8.0/CryptoLib_DES.dll
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/bin/Release/net8.0/CryptoLib_DES.pdb
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/CryptoLib_DES.GeneratedMSBuildEditorConfig.editorconfig
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/CryptoLib_DES.AssemblyInfoInputs.cache
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/CryptoLib_DES.AssemblyInfo.cs
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/CryptoLib_DES.csproj.CoreCompileInputs.cache
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/CryptoLib_DES.sourcelink.json
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/CryptoLib_DES.dll
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/refint/CryptoLib_DES.dll
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/CryptoLib_DES.pdb
+/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/Release/net8.0/ref/CryptoLib_DES.dll

@@ -56,4 +56,3 @@ CryptoCoursework/
 
 TO_DO:
 - добавить аналогичные тесты Advanced в RSA
-- TripleDES нужен
