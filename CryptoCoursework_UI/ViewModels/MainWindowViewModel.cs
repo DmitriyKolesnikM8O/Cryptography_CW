@@ -12,4 +12,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
 
     public DiffieHellmanViewModel DhTabViewModel { get; } = new DiffieHellmanViewModel();
+
+    public Rc4ViewModel Rc4TabViewModel { get; } = new Rc4ViewModel();
+    public Loki97ViewModel Loki97TabViewModel { get; } = new Loki97ViewModel(); 
 }

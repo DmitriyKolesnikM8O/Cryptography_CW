@@ -685,7 +685,14 @@ namespace CryptoLib.New.Modes
 
         private byte[] RemoveZerosPadding(byte[] data)
         {
-            return data;
+            int i = data.Length - 1;
+            while (i >= 0 && data[i] == 0)
+            {
+                i--;
+            }
+            // i - индекс последнего НЕ нулевого байта.
+            // Берем i + 1 байт.
+            return data.Take(i + 1).ToArray();
         }
 
         private byte[] ApplyPKCS7Padding(byte[] data, int paddingLength)

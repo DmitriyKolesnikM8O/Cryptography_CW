@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:CryptoCoursework_UI.ViewModels.Tabs"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="CryptoCoursework_UI.Views.Tabs.Loki97View"
+             x:DataType="vm:Loki97ViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="15">
+        <TextBlock Grid.Row="0" Text="LOKI97 (128-bit Block Cipher)" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Spacing="10" Margin="0,20,0,0">
+            
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="1. Настройки" FontWeight="Bold"/>
+                    <Grid ColumnDefinitions="Auto,*,Auto,*" RowDefinitions="Auto">
+                        <TextBlock Grid.Column="0" Text="Режим:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <ComboBox Grid.Column="1" ItemsSource="{Binding CipherModes}" SelectedItem="{Binding SelectedMode}" HorizontalAlignment="Stretch" Margin="0,0,20,0"/>
+                        
+                        <TextBlock Grid.Column="2" Text="Паддинг:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <ComboBox Grid.Column="3" ItemsSource="{Binding PaddingModes}" SelectedItem="{Binding SelectedPadding}" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="2. Ключ и IV" FontWeight="Bold"/>
+                    <DockPanel>
+                        <Button Content="Сгенерировать" DockPanel.Dock="Right" Command="{Binding GenerateKeyAndIvCommand}" IsEnabled="{Binding !IsBusy}"/>
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Ключ (Hex):"/>
+                            <TextBox Text="{Binding KeyHex}" Watermark="16, 24 или 32 байта"/>
+                            <TextBlock Text="IV (Hex):" IsVisible="{Binding IsIvVisible}"/>
+                            <TextBox Text="{Binding IvHex}" IsVisible="{Binding IsIvVisible}" Watermark="16 байт"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="3. Файлы" FontWeight="Bold"/>
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                        <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding InputFilePath}" Watermark="Исходный файл" IsReadOnly="True"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="..." Command="{Binding SelectInputFileCommand}" IsEnabled="{Binding !IsBusy}"/>
+                        
+                        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding OutputFilePath}" Watermark="Результат" IsReadOnly="True" Margin="0,5,0,0"/>
+                        <Button Grid.Row="1" Grid.Column="1" Content="..." Command="{Binding SelectOutputFileCommand}" IsEnabled="{Binding !IsBusy}" Margin="0,5,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" Margin="0,10,0,0">
+                <Button Grid.Column="0" Content="Шифровать" Command="{Binding EncryptCommand}" IsEnabled="{Binding !IsBusy}" HorizontalAlignment="Stretch" Margin="0,0,5,0"/>
+                <Button Grid.Column="1" Content="Дешифровать" Command="{Binding DecryptCommand}" IsEnabled="{Binding !IsBusy}" HorizontalAlignment="Stretch" Margin="5,0,0,0"/>
+            </Grid>
+        </StackPanel>
+
+        <Border Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0" Padding="0,10,0,0">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}" Width="100"/>
+                <TextBlock Text="{Binding StatusMessage}" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

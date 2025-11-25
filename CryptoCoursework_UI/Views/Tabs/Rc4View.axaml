@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:CryptoCoursework_UI.ViewModels.Tabs"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="CryptoCoursework_UI.Views.Tabs.Rc4View"
+             x:DataType="vm:Rc4ViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="15">
+        <TextBlock Grid.Row="0" Text="RC4 Stream Cipher" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Spacing="15" Margin="0,20,0,0" MaxWidth="600" HorizontalAlignment="Center">
+            
+            <TextBlock Text="RC4 — потоковый шифр. Операции шифрования и дешифрования идентичны." 
+                       TextWrapping="Wrap" FontStyle="Italic" Foreground="Gray"/>
+
+            <!-- Ключ -->
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Ключ потока" FontWeight="Bold"/>
+                    <DockPanel>
+                        <Button Content="Сгенерировать" DockPanel.Dock="Right" Command="{Binding GenerateKeyCommand}" IsEnabled="{Binding !IsBusy}"/>
+                        <TextBox Text="{Binding KeyHex}" Watermark="Hex строка (любой длины)"/>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Файлы -->
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Файлы" FontWeight="Bold"/>
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                        <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding InputFilePath}" Watermark="Входной файл" IsReadOnly="True"/>
+                        <Button Grid.Row="0" Grid.Column="1" Content="..." Command="{Binding SelectInputFileCommand}" IsEnabled="{Binding !IsBusy}"/>
+                        
+                        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding OutputFilePath}" Watermark="Выходной файл" IsReadOnly="True" Margin="0,5,0,0"/>
+                        <Button Grid.Row="1" Grid.Column="1" Content="..." Command="{Binding SelectOutputFileCommand}" IsEnabled="{Binding !IsBusy}" Margin="0,5,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Кнопка -->
+            <Button Content="Выполнить (Encrypt / Decrypt)" Command="{Binding ProcessFileCommand}" 
+                    IsEnabled="{Binding !IsBusy}" 
+                    HorizontalAlignment="Stretch" Height="40" Classes="accent"/>
+        </StackPanel>
+
+        <!-- Статус -->
+        <Border Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0" Padding="0,10,0,0">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}" Width="100"/>
+                <TextBlock Text="{Binding StatusMessage}" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

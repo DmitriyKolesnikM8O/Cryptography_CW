@@ -26,15 +26,14 @@
             <tabs:RijndaelView DataContext="{Binding RijndaelTabViewModel}"/>
         </TabItem>
         
-        <!-- Заглушки для будущих заданий -->
         <TabItem Header="Diffie-Hellman">
             <tabs:DiffieHellmanView DataContext="{Binding DhTabViewModel}"/>
         </TabItem>
         <TabItem Header="RC4">
-             <TextBlock Text="Soon..." HorizontalAlignment="Center"/>
+            <tabs:Rc4View DataContext="{Binding Rc4TabViewModel}"/>
         </TabItem>
         <TabItem Header="LOKI97">
-             <TextBlock Text="Soon..." HorizontalAlignment="Center"/>
+            <tabs:Loki97View DataContext="{Binding Loki97TabViewModel}"/>
         </TabItem>
     </TabControl>
 
