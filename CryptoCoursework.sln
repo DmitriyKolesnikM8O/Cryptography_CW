@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoLib_New", "CryptoLib_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTests_New", "CryptoTests_New\CryptoTests_New.csproj", "{3235F3F8-8915-4ACF-849F-B090672B5EB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCoursework_UI", "CryptoCoursework_UI\CryptoCoursework_UI.csproj", "{9368ABF1-65FB-4BB2-803F-2B9DD60BC012}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,10 @@ Global
 		{3235F3F8-8915-4ACF-849F-B090672B5EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3235F3F8-8915-4ACF-849F-B090672B5EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3235F3F8-8915-4ACF-849F-B090672B5EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9368ABF1-65FB-4BB2-803F-2B9DD60BC012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9368ABF1-65FB-4BB2-803F-2B9DD60BC012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9368ABF1-65FB-4BB2-803F-2B9DD60BC012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9368ABF1-65FB-4BB2-803F-2B9DD60BC012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26950FFD-B6E3-4BC5-B674-FF61A627E3BC} = {7174F159-A60E-413B-AB50-F093A8D94601}

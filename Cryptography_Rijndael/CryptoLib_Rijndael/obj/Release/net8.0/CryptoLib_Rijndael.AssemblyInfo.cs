@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoLib_Rijndael")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aadbcb43e1d0f3f9f2f75a5951ba741639c336f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+964cd78b36a554cc9c2546b746036b0d9fe25998")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoLib_Rijndael")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoLib_Rijndael")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

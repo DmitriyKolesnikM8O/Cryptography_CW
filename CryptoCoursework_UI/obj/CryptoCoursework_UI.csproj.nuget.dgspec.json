@@ -1,0 +1,316 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ares/Cryptography_CW/CryptoCoursework_UI/CryptoCoursework_UI.csproj": {}
+  },
+  "projects": {
+    "/home/ares/Cryptography_CW/CryptoCoursework_UI/CryptoCoursework_UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ares/Cryptography_CW/CryptoCoursework_UI/CryptoCoursework_UI.csproj",
+        "projectName": "CryptoCoursework_UI",
+        "projectPath": "/home/ares/Cryptography_CW/CryptoCoursework_UI/CryptoCoursework_UI.csproj",
+        "packagesPath": "/home/ares/.nuget/packages/",
+        "outputPath": "/home/ares/Cryptography_CW/CryptoCoursework_UI/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ares/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj": {
+                "projectPath": "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj"
+              },
+              "/home/ares/Cryptography_CW/CryptoLib_New/CryptoLib_New.csproj": {
+                "projectPath": "/home/ares/Cryptography_CW/CryptoLib_New/CryptoLib_New.csproj"
+              },
+              "/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/CryptoLib_RSA.csproj": {
+                "projectPath": "/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/CryptoLib_RSA.csproj"
+              },
+              "/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/CryptoLib_Rijndael.csproj": {
+                "projectPath": "/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/CryptoLib_Rijndael.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Diagnostics": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Fonts.Inter": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Themes.Fluent": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.121/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj",
+        "projectName": "CryptoLib_DES",
+        "projectPath": "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj",
+        "packagesPath": "/home/ares/.nuget/packages/",
+        "outputPath": "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ares/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.121/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ares/Cryptography_CW/CryptoLib_New/CryptoLib_New.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ares/Cryptography_CW/CryptoLib_New/CryptoLib_New.csproj",
+        "projectName": "CryptoLib_New",
+        "projectPath": "/home/ares/Cryptography_CW/CryptoLib_New/CryptoLib_New.csproj",
+        "packagesPath": "/home/ares/.nuget/packages/",
+        "outputPath": "/home/ares/Cryptography_CW/CryptoLib_New/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ares/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj": {
+                "projectPath": "/home/ares/Cryptography_CW/CryptoLab_DES/CryptoLib_DES/CryptoLib_DES.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.121/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/CryptoLib_RSA.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/CryptoLib_RSA.csproj",
+        "projectName": "CryptoLib_RSA",
+        "projectPath": "/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/CryptoLib_RSA.csproj",
+        "packagesPath": "/home/ares/.nuget/packages/",
+        "outputPath": "/home/ares/Cryptography_CW/Cryptography_RSA/CryptoLib_RSA/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ares/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.121/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/CryptoLib_Rijndael.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/CryptoLib_Rijndael.csproj",
+        "projectName": "CryptoLib_Rijndael",
+        "projectPath": "/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/CryptoLib_Rijndael.csproj",
+        "packagesPath": "/home/ares/.nuget/packages/",
+        "outputPath": "/home/ares/Cryptography_CW/Cryptography_Rijndael/CryptoLib_Rijndael/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ares/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.121/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+             xmlns:vm="using:CryptoCoursework_UI.ViewModels.Tabs" 
+             
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             
+             x:Class="CryptoCoursework_UI.Views.Tabs.RijndaelView"
+             x:DataType="vm:RijndaelViewModel">
+
+    <TabControl>
+        <!-- ВКЛАДКА 1: ШИФРОВАНИЕ ФАЙЛОВ -->
+        <TabItem Header="Шифрование файлов">
+            <Grid RowDefinitions="Auto,*,Auto" Margin="15">
+                <StackPanel Grid.Row="0" Spacing="10">
+                    <TextBlock Text="1. Выбор файлов" FontWeight="Bold"/>
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" Margin="0,5,0,0">
+                        <TextBlock Text="Исходный файл:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding SourceFilePath}" IsReadOnly="True" Margin="0,0,10,0"/>
+                        <Button Grid.Column="1" Grid.Row="1" Content="Выбрать..." Command="{Binding SelectSourceFileCommand}"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" Margin="0,5,0,0">
+                        <TextBlock Text="Файл для результата:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding TargetFilePath}" IsReadOnly="True" Margin="0,0,10,0"/>
+                        <Button Grid.Column="1" Grid.Row="1" Content="Выбрать..." Command="{Binding SelectTargetFileCommand}"/>
+                    </Grid>
+                    <TextBlock Text="2. Параметры шифрования" FontWeight="Bold" Margin="0,15,0,0"/>
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" Margin="0,5,0,0" ColumnSpacing="10" RowSpacing="5">
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Пароль:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Password}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Режим шифрования:" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CipherModes}" SelectedItem="{Binding SelectedCipherMode}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Режим паддинга:" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding PaddingModes}" SelectedItem="{Binding SelectedPaddingMode}"/>
+                    </Grid>
+                </StackPanel>
+
+                
+                <StackPanel Grid.Row="1" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Button Content="Зашифровать" Command="{Binding EncryptCommand}" IsEnabled="{Binding IsNotBusy}"
+                            Background="ForestGreen" Foreground="White" Padding="20,10"/>
+                    <Button Content="Расшифровать" Command="{Binding DecryptCommand}" IsEnabled="{Binding IsNotBusy}"
+                            Background="Crimson" Foreground="White" Padding="20,10"/>
+                </StackPanel>
+                
+                
+                <StackPanel Grid.Row="2" Spacing="5" VerticalAlignment="Bottom">
+                    <ProgressBar Value="{Binding Progress}" Minimum="0" Maximum="100" IsIndeterminate="{Binding IsBusy}"/>
+                    <TextBlock Text="{Binding StatusText}" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <!-- ВКЛАДКА 2: КРИПТО-КАЛЬКУЛЯТОР -->
+        <TabItem Header="Крипто-калькулятор">
+        <ScrollViewer> 
+            <StackPanel Margin="15" Spacing="10">
+                
+                <TextBlock Text="Разложение полиномов на множители" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="Введите полином в двоичном виде (например, 10000001 для x^7+1):" TextWrapping="Wrap"/>
+                <TextBox Text="{Binding PolynomialToFactorString}"/>
+                <Button Content="Разложить на множители" Command="{Binding FactorizePolynomialCommand}" HorizontalAlignment="Center"/>
+                
+                <TextBlock Text="Результат:" Margin="0,10,0,0" FontWeight="Bold"/>
+                
+                <TextBox Text="{Binding FactorizationResult}" 
+                         IsReadOnly="True" 
+                         TextWrapping="Wrap" 
+                         Height="150" 
+                         AcceptsReturn="True"
+                         FontFamily="Monospace"/>
+                
+                
+                <Separator Margin="0,10"/>
+                <TextBlock Text="Калькулятор поля Галуа GF(2^8)" FontSize="16" FontWeight="Bold"/>
+                
+                
+                <Grid ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="10" Margin="0,5,0,0">
+                    <TextBlock Grid.Column="0" Text="Операнд A (HEX):" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Text="{Binding OperandAString}"/>
+                    <TextBlock Grid.Column="2" Text="Операнд B (HEX):" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="3" Text="{Binding OperandBString}"/>
+                </Grid>
+
+                
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Margin="0,5,0,0">
+                    <TextBlock Grid.Column="0" Text="Неприводимый полином (модуль):" VerticalAlignment="Center"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding IrreduciblePolynomials}" SelectedItem="{Binding SelectedPolynomial}"/>
+                </Grid>
+
+                <Button Content="Вычислить" Command="{Binding CalculateGfCommand}" HorizontalAlignment="Center" Margin="0,15,0,0"/>
+
+                <TextBlock Text="Результаты вычислений:" Margin="0,10,0,0" FontWeight="Bold"/>
+                <TextBox Text="{Binding GfCalculationResult}" 
+                         IsReadOnly="True" 
+                         TextWrapping="Wrap" 
+                         Height="100" 
+                         AcceptsReturn="True"
+                         FontFamily="Monospace"/>
+
+            </StackPanel>
+            </ScrollViewer> 
+        </TabItem>
+    </TabControl>
+</UserControl>
