@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoCoursework_UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+964cd78b36a554cc9c2546b746036b0d9fe25998")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95d758990953dede011987476ac0d37144c90e12")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoCoursework_UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoCoursework_UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

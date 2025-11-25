@@ -8,4 +8,8 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public RsaViewModel RsaTabViewModel { get; } = new RsaViewModel();
     public RijndaelViewModel RijndaelTabViewModel { get; } = new RijndaelViewModel();
+
+
+
+    public DiffieHellmanViewModel DhTabViewModel { get; } = new DiffieHellmanViewModel();
 }

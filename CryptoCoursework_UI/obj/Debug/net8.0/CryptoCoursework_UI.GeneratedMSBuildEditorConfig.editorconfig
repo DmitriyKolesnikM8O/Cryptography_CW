@@ -33,6 +33,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [/home/ares/Cryptography_CW/CryptoCoursework_UI/Views/Tabs/DesView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/home/ares/Cryptography_CW/CryptoCoursework_UI/Views/Tabs/DiffieHellmanView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/home/ares/Cryptography_CW/CryptoCoursework_UI/Views/Tabs/RijndaelView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

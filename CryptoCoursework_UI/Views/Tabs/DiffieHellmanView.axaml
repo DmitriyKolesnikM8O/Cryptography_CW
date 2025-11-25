@@ -1,0 +1,110 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:CryptoCoursework_UI.ViewModels.Tabs"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
+             x:Class="CryptoCoursework_UI.Views.Tabs.DiffieHellmanView"
+             x:DataType="vm:DiffieHellmanViewModel">
+
+    <Grid RowDefinitions="Auto, *, Auto" Margin="15">
+        
+        <!-- Header & Controls -->
+        <StackPanel Grid.Row="0" Spacing="10">
+            <TextBlock Text="Протокол Диффи-Хеллмана (Key Exchange)" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20" Margin="0,10">
+                <Button Content="1. Сгенерировать Ключи" Command="{Binding GenerateKeysCommand}" Padding="15,10"/>
+                <Button Content="2. Вычислить Общий Секрет" Command="{Binding CalculateSecretCommand}" Padding="15,10"/>
+            </StackPanel>
+
+            <Expander Header="Общие параметры группы (P и G)">
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Модуль (P) - RFC 3526 (1536 bit):" FontWeight="Bold"/>
+                    <TextBox Text="{Binding ParamP}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="60"/>
+                    <TextBlock Text="Генератор (G):" FontWeight="Bold"/>
+                    <TextBox Text="{Binding ParamG}" IsReadOnly="True"/>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+
+        <!-- Alice & Bob Columns -->
+        <Grid Grid.Row="1" ColumnDefinitions="*, 20, *" Margin="0,20">
+            
+            <!-- ALICE -->
+            <Border Grid.Column="0" BorderBrush="CornflowerBlue" BorderThickness="2" CornerRadius="5" Padding="10">
+                <ScrollViewer>
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="АЛИСА (Initiator)" FontSize="18" FontWeight="Bold" Foreground="CornflowerBlue" HorizontalAlignment="Center"/>
+                        
+                        <TextBlock Text="Приватный ключ (a):"/>
+                        <TextBox Text="{Binding AlicePrivateKey}" IsReadOnly="True" PasswordChar="*"/>
+                        
+                        <TextBlock Text="Публичный ключ (A = G^a mod P):"/>
+                        <TextBox Text="{Binding AlicePublicKey}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="80"/>
+                        
+                        <Separator/>
+                        <TextBlock Text="Вычисленный секрет (S = B^a mod P):" FontWeight="Bold"/>
+                        <TextBox Text="{Binding AliceCalculatedSecret}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="80" Background="#F0F8FF"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Separator -->
+            <Grid Grid.Column="1" RowDefinitions="*,*,*">
+                <TextBlock Grid.Row="1" Text="⇄" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+
+            <!-- BOB -->
+            <Border Grid.Column="2" BorderBrush="MediumSeaGreen" BorderThickness="2" CornerRadius="5" Padding="10">
+                <ScrollViewer>
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="БОБ (Receiver)" FontSize="18" FontWeight="Bold" Foreground="MediumSeaGreen" HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="Приватный ключ (b):"/>
+                        <TextBox Text="{Binding BobPrivateKey}" IsReadOnly="True" PasswordChar="*"/>
+
+                        <TextBlock Text="Публичный ключ (B = G^b mod P):"/>
+                        <TextBox Text="{Binding BobPublicKey}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="80"/>
+
+                        <Separator/>
+                        <TextBlock Text="Вычисленный секрет (S = A^b mod P):" FontWeight="Bold"/>
+                        <TextBox Text="{Binding BobCalculatedSecret}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="80" Background="#F0FFF0"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <!-- Demo Section -->
+        <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10" Margin="0,10,0,0">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Демонстрация: Использование ключа (LOKI97)" FontWeight="Bold"/>
+                
+                <Grid ColumnDefinitions="Auto, *">
+                    <TextBlock Grid.Column="0" Text="Общий ключ (SHA256): " VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Text="{Binding DerivedKeyHex}" IsReadOnly="True" FontFamily="Consolas"/>
+                </Grid>
+
+                <!-- НОВЫЕ НАСТРОЙКИ -->
+                <Grid ColumnDefinitions="Auto, *, Auto, *">
+                    <TextBlock Grid.Column="0" Text="Режим:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding CipherModes}" SelectedItem="{Binding SelectedMode}" HorizontalAlignment="Stretch" Margin="0,0,10,0"/>
+                    
+                    <TextBlock Grid.Column="2" Text="Паддинг:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <ComboBox Grid.Column="3" ItemsSource="{Binding PaddingModes}" SelectedItem="{Binding SelectedPadding}" HorizontalAlignment="Stretch"/>
+                </Grid>
+
+                <Grid ColumnDefinitions="*, 120, *">
+                    <TextBox Grid.Column="0" Text="{Binding MessageToSend}" Watermark="Введите сообщение..."/>
+                    <Button Grid.Column="1" Content="Шифровать ->" Command="{Binding TestEncryptionCommand}" HorizontalAlignment="Center"/>
+                    <TextBox Grid.Column="2" Text="{Binding DecryptedMessage}" IsReadOnly="True" Watermark="Результат у Боба"/>
+                </Grid>
+                
+                <TextBlock Text="Шифротекст (Hex):"/>
+                <TextBox Text="{Binding EncryptedHex}" IsReadOnly="True" FontFamily="Consolas" TextWrapping="Wrap" MaxHeight="40"/>
+                
+                <TextBlock Text="{Binding StatusMessage}" FontStyle="Italic" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

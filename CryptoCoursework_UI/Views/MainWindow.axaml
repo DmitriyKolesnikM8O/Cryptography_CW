@@ -28,7 +28,7 @@
         
         <!-- Заглушки для будущих заданий -->
         <TabItem Header="Diffie-Hellman">
-             <TextBlock Text="Soon..." HorizontalAlignment="Center"/>
+            <tabs:DiffieHellmanView DataContext="{Binding DhTabViewModel}"/>
         </TabItem>
         <TabItem Header="RC4">
              <TextBlock Text="Soon..." HorizontalAlignment="Center"/>
