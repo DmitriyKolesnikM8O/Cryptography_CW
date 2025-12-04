@@ -10,9 +10,16 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 // Используем Enums из DES
-using CryptoLib.DES.Modes; 
+using CryptoLib.DES.Modes;
 // Используем CipherContext из New
 using CryptoLib.New.Modes; 
+
+public enum KeySizeLoki
+{
+    Bits128 = 128,
+    Bits192 = 192,
+    Bits256 = 256
+}
 
 namespace CryptoCoursework_UI.ViewModels.Tabs
 {
@@ -23,9 +30,19 @@ namespace CryptoCoursework_UI.ViewModels.Tabs
         [ObservableProperty] private string _keyHex = "";
         [ObservableProperty] private string _ivHex = "";
         [ObservableProperty] private string _statusMessage = "Готово к работе.";
-        [ObservableProperty] [NotifyPropertyChangedFor(nameof(IsIvVisible))] private CipherMode _selectedMode = CipherMode.CBC;
+        [ObservableProperty][NotifyPropertyChangedFor(nameof(IsIvVisible))] private CipherMode _selectedMode = CipherMode.CBC;
         [ObservableProperty] private PaddingMode _selectedPadding = PaddingMode.PKCS7;
-        [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(GenerateKeyAndIvCommand))] [NotifyCanExecuteChangedFor(nameof(EncryptCommand))] [NotifyCanExecuteChangedFor(nameof(DecryptCommand))] private bool _isBusy = false;
+        [ObservableProperty][NotifyCanExecuteChangedFor(nameof(GenerateKeyAndIvCommand))][NotifyCanExecuteChangedFor(nameof(EncryptCommand))][NotifyCanExecuteChangedFor(nameof(DecryptCommand))] private bool _isBusy = false;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(KeyBitSize))]
+        private KeySizeLoki _selectedKeySize = KeySizeLoki.Bits256;
+
+        // Список доступных размеров ключа
+        public List<KeySizeLoki> KeySizes { get; } = Enum.GetValues<KeySizeLoki>().ToList();
+
+        // Вычисляемое свойство для отображения размера в битах
+        public int KeyBitSize => (int)SelectedKeySize;
 
         public List<CipherMode> CipherModes { get; } = Enum.GetValues<CipherMode>().ToList();
         public List<PaddingMode> PaddingModes { get; } = Enum.GetValues<PaddingMode>().ToList();
@@ -51,8 +68,9 @@ namespace CryptoCoursework_UI.ViewModels.Tabs
             try
             {
                 var rnd = new Random();
-                // LOKI97 поддерживает 128, 192, 256 бит. Сделаем 256 (32 байта).
-                byte[] key = new byte[32];
+                int keySizeBytes = (int)SelectedKeySize / 8;
+                // LOKI97 поддерживает 128, 192, 256 бит.
+                byte[] key = new byte[keySizeBytes];
                 rnd.NextBytes(key);
                 KeyHex = BitConverter.ToString(key).Replace("-", "");
 
@@ -64,7 +82,7 @@ namespace CryptoCoursework_UI.ViewModels.Tabs
                     IvHex = BitConverter.ToString(iv).Replace("-", "");
                 }
                 else { IvHex = ""; }
-                StatusMessage = "Ключ (256 бит) и IV сгенерированы.";
+                StatusMessage = "Ключ и IV сгенерированы.";
             }
             catch (Exception ex) { StatusMessage = $"Ошибка: {ex.Message}"; }
         }
@@ -130,6 +148,23 @@ namespace CryptoCoursework_UI.ViewModels.Tabs
             if (string.IsNullOrEmpty(InputFilePath) || !File.Exists(InputFilePath)) { StatusMessage = "Нет входного файла."; return false; }
             if (string.IsNullOrEmpty(OutputFilePath)) { StatusMessage = "Нет пути сохранения."; return false; }
             if (string.IsNullOrEmpty(KeyHex)) { StatusMessage = "Нет ключа."; return false; }
+
+            // Проверка длины ключа
+            try
+            {
+                byte[] key = HexStringToByteArray(KeyHex);
+                int expectedBytes = (int)SelectedKeySize / 8;
+                if (key.Length != expectedBytes)
+                {
+                    StatusMessage = $"Ключ должен быть {expectedBytes} байт ({(int)SelectedKeySize} бит).";
+                    return false;
+                }
+            }
+            catch
+            {
+                StatusMessage = "Неверный формат ключа.";
+                return false;
+            }
             // При дешифровке IV берется из файла, проверять поле ввода не обязательно
             if (IsIvVisible && !isDecrypt && string.IsNullOrEmpty(IvHex)) { StatusMessage = "Нет IV."; return false; }
             return true;
